@@ -28,6 +28,18 @@ redirect_from:
 
 病後の通院治療から日常の**予防医療**へ。病院インフラの分散化や過疎地・災害現場での代替医療、二次元無線技術×スキンエレクトロニクスの人材育成を目指します。
 
+<h2 id="news">News / お知らせ</h2>
+
+{% assign news = site.data.news | sort: "date" | reverse %}
+<ul class="news-list">
+{% for n in news %}
+  <li>
+    <span class="news-date">{{ n.date }}</span>
+    <span class="news-body">{% if n.url and n.url != "" %}<a href="{{ n.url }}" target="_blank" rel="noopener">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</span>
+  </li>
+{% endfor %}
+</ul>
+
 <h2 id="members">メンバー / Team</h2>
 
 <div class="member-grid">

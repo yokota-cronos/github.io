@@ -161,6 +161,21 @@
   .pub-year { flex: 0 0 3.2em; font-weight: 700; color: #1565c0; }
   .pub-body { flex: 1; }
 
+  /* News list */
+  .news-list { list-style: none; padding-left: 0; }
+  .news-list li {
+    display: flex;
+    gap: 0.8em;
+    padding: 0.6em 0;
+    border-bottom: 1px solid #eee;
+    align-items: baseline;
+  }
+  .news-date { flex: 0 0 5.5em; font-weight: 700; color: #1565c0; }
+  .news-body { flex: 1; }
+  @media (max-width: 480px) {
+    .news-list li { flex-direction: column; gap: 0.1em; }
+  }
+
   /* Locations */
   .loc-grid {
     display: grid;

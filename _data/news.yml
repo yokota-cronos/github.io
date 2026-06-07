@@ -1,0 +1,12 @@
+# お知らせ / News。新しい項目を上に追加（date の降順で自動表示）。
+# date: 表示する日付（"2025-09" や "2025-09-01" など文字列）
+# text: 本文
+# url:  リンク（空 "" ならリンクなし）
+
+- date: "2025-09"
+  text: "UIST '25 にて研究成果「Ultra-low-power ring-based wireless tinymouse」を発表しました。"
+  url: "https://dl.acm.org/doi/10.1145/3746059.3747615"
+
+- date: "2025-04"
+  text: "JST CRONOS 2025年度 中尾領域に本プロジェクトが採択されました。"
+  url: ""

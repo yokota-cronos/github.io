@@ -4,6 +4,9 @@ main:
   - title: "概要 / Overview"
     url: /#overview
 
+  - title: "News"
+    url: /#news
+
   - title: "メンバー / Team"
     url: /#members
 
