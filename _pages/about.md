@@ -18,13 +18,9 @@ redirect_from:
 
 <span id="overview"></span>
 
-皮膚に密着する「スキンイメージャー」の大容量生体データを半日以上クラウドへ連続ストリーミングする、服型の生体データ通信インフラを実現します。周囲の空間とアイソレートした服型の二次元無線通信・給電インフラを、物理層から MAC 層まで設計します。
+皮膚に密着する「スキンイメージャー」の大容量生体データを半日以上クラウドへ連続ストリーミングする、服型の生体データ通信インフラを実現します。周囲の空間とアイソレートした服型の二次元無線通信・給電インフラを、物理層から MAC 層まで設計します。5〜6 つの「スキンイメージャー」を半日以上連続駆動するために、50 Mbps 級のセキュアな無線通信と 5 W 級の安全な給電ができる「全身無線通信・給電服」を実現します。病後の通院治療から日常の予防医療へ。病院インフラの分散化や過疎地・災害現場での代替医療、二次元無線技術×スキンエレクトロニクスの人材育成を目指します。
 
-<p class="grand-challenge">5〜6 つの「スキンイメージャー」を半日以上連続駆動するために、50 Mbps 級のセキュアな無線通信と 5 W 級の安全な給電ができる「全身無線通信・給電服」を実現します。</p>
-
-病後の通院治療から日常の予防医療へ。病院インフラの分散化や過疎地・災害現場での代替医療、二次元無線技術×スキンエレクトロニクスの人材育成を目指します。
-
-<p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、サーフェス型無線、スキンデバイス、NFC VHBR</p>
+<p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、サーフェス型無線、スキンデバイス、NFC VHBR（高速NFC）</p>
 
 <h2 id="news">News</h2>
 
@@ -53,7 +49,7 @@ redirect_from:
     <div class="member-name">{{ m.name_ja }}{% if m.bio and m.bio != "" %} <span class="bio-hint" title="経歴を表示">ⓘ</span>{% endif %}</div>
     <div class="member-name-en">{{ m.name_en }}</div>
     <div class="member-role">{{ m.role }}</div>
-    <div class="member-aff">{{ m.affiliation }}</div>
+    <div class="member-aff">{{ m.affiliation | replace: ' ', '<br>' }}</div>
     <div class="member-links">
       {% if m.email and m.email != "" %}<a class="ico ico-mail" href="mailto:{{ m.email }}" title="Email"><i class="fas fa-envelope" aria-hidden="true"></i><span class="sr-only">Email</span></a>{% endif %}
       {% if m.researchmap and m.researchmap != "" %}<a class="ico ico-rmap" href="{{ m.researchmap }}" title="researchmap" target="_blank" rel="noopener"><span class="rmap-txt" aria-hidden="true">rm</span><span class="sr-only">researchmap</span></a>{% endif %}
@@ -66,8 +62,6 @@ redirect_from:
 </div>
 
 <h2 id="publications">Publications</h2>
-
-<p class="data-note">※ 業績はスプレッドシートで管理し、1日1回 自動でこのページに反映されます。</p>
 
 {% assign pubs = site.data.publications | sort: "year" | reverse %}
 <ul class="pub-list">
@@ -91,7 +85,7 @@ redirect_from:
 {% endfor %}
 </ul>
 
-<h2 id="locations">Location</h2>
+<h2 id="location">Location</h2>
 
 <div class="loc-grid">
   <div class="loc-card">
