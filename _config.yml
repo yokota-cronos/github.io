@@ -15,8 +15,8 @@ title_separator          : "-"
 name                     : &name "CRONOS Project"
 description              : &description "JST CRONOS 2025・中尾領域 — 全身無線通信・給電服による生体データ通信インフラの研究。Full-body Wireless Data and Power Networking."   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://yokota-cronos.github.io # The base hostname & protocol for your site
-baseurl                  : "/github.io" # the subpath of your site (repository name)
-repository               : "yokota-cronos/github.io"
+baseurl                  : "" # 組織ページ(yokota-cronos.github.io)としてルート公開
+repository               : "yokota-cronos/yokota-cronos.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
