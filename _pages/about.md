@@ -12,12 +12,11 @@ redirect_from:
 {% include base_path %}
 
 <div class="hero">
-  <p class="hero-program">JST CRONOS・2025年度 中尾領域（AREA 1, PO: 中尾）</p>
-  <h1 class="hero-title">生体データ通信インフラの無線フルボディ化</h1>
-  <p class="hero-subtitle">Full-body Wireless Data and Power Networking</p>
+  <p class="hero-program">JST CRONOS 2025 · Area 1 (PO: Nakao)</p>
+  <h1 class="hero-title">Full-body Wireless Data and Power Networking</h1>
 </div>
 
-<h2 id="overview">プロジェクト概要 / Overview</h2>
+<h2 id="overview">Overview</h2>
 
 皮膚に密着する「スキンイメージャー」の大容量生体データを半日以上クラウドへ連続ストリーミングする、**服型の生体データ通信インフラ**を実現します。周囲の空間とアイソレートした服型の**二次元無線通信・給電インフラ**を、物理層から MAC 層まで設計します。
 
@@ -45,7 +44,7 @@ redirect_from:
 </div>
 {% if news.size > 5 %}<p class="news-more"><a href="{{ base_path }}/news/">View all news →</a></p>{% endif %}
 
-<h2 id="members">メンバー / Team</h2>
+<h2 id="members">Team</h2>
 
 <div class="member-grid">
 {% for m in site.data.members %}
@@ -81,7 +80,7 @@ redirect_from:
 {% endfor %}
 </ul>
 
-<h2 id="awards">Awards / 受賞</h2>
+<h2 id="awards">Awards</h2>
 
 {% assign awards = site.data.awards | sort: "year" | reverse %}
 <ul class="pub-list">
@@ -93,7 +92,7 @@ redirect_from:
 {% endfor %}
 </ul>
 
-<h2 id="locations">活動場所 / Locations</h2>
+<h2 id="locations">Locations</h2>
 
 <div class="loc-grid">
   <div class="loc-card">

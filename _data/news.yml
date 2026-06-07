@@ -14,13 +14,13 @@
   image: "ral_award.jpg"
   url: ""
 
-- date: "2025-09"
+- date: "2025-10"
   title: "Presented at ACM UIST '25"
   text: "「Ultra-low-power ring-based wireless tinymouse」を ACM UIST '25 にて発表しました。"
   image: ""
   url: "https://dl.acm.org/doi/10.1145/3746059.3747615"
 
-- date: "2025-04"
+- date: "2025-10"
   title: "Selected for JST CRONOS 2025"
   text: "JST CRONOS 2025年度 中尾領域に本プロジェクトが採択されました。"
   image: ""
