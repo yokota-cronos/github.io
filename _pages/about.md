@@ -28,17 +28,22 @@ redirect_from:
 
 病後の通院治療から日常の**予防医療**へ。病院インフラの分散化や過疎地・災害現場での代替医療、二次元無線技術×スキンエレクトロニクスの人材育成を目指します。
 
-<h2 id="news">News / お知らせ</h2>
+<h2 id="news">News</h2>
 
 {% assign news = site.data.news | sort: "date" | reverse %}
-<ul class="news-list">
-{% for n in news %}
-  <li>
-    <span class="news-date">{{ n.date }}</span>
-    <span class="news-body">{% if n.url and n.url != "" %}<a href="{{ n.url }}" target="_blank" rel="noopener">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</span>
-  </li>
+<div class="news-grid">
+{% for n in news limit:5 %}
+  {% if n.url and n.url != "" %}<a class="news-card" href="{{ n.url }}" target="_blank" rel="noopener">{% else %}<div class="news-card">{% endif %}
+    {% if n.image and n.image != "" %}<img class="news-thumb" src="{{ base_path }}/images/news/{{ n.image }}" alt="">{% else %}<div class="news-thumb news-thumb--ph"></div>{% endif %}
+    <div class="news-card-body">
+      <div class="news-card-title">{{ n.title }}</div>
+      <div class="news-card-text">{{ n.text }}</div>
+      <div class="news-card-date">{{ n.date }}</div>
+    </div>
+  {% if n.url and n.url != "" %}</a>{% else %}</div>{% endif %}
 {% endfor %}
-</ul>
+</div>
+<p class="news-more"><a href="{{ base_path }}/news/">View all news →</a></p>
 
 <h2 id="members">メンバー / Team</h2>
 

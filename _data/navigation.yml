@@ -1,13 +1,13 @@
 # ヘッダーのナビゲーション（1ページ構成の各セクションへのアンカー）
 
 main:
-  - title: "概要 / Overview"
+  - title: "Overview"
     url: /#overview
 
   - title: "News"
     url: /#news
 
-  - title: "メンバー / Team"
+  - title: "Team"
     url: /#members
 
   - title: "Publications"
@@ -16,5 +16,5 @@ main:
   - title: "Awards"
     url: /#awards
 
-  - title: "活動場所 / Locations"
+  - title: "Locations"
     url: /#locations
