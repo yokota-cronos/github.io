@@ -45,6 +45,22 @@
     margin: 1.5em 0;
   }
 
+  /* 外部リンクアイコン（GitHub / JST CRONOS） */
+  .ext-links { display: flex; align-items: center; gap: 0.9em; margin: 0.9em 0 0; }
+  .ext-gh {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 8px;
+    background: #24292f; color: #fff !important; font-size: 1.25em;
+    text-decoration: none !important; transition: transform 0.15s ease;
+  }
+  .ext-gh:hover { transform: translateY(-2px); }
+  .ext-cronos { display: inline-flex; }
+  .ext-cronos img {
+    height: 40px; width: auto; display: block; border-radius: 6px;
+    transition: opacity 0.15s ease;
+  }
+  .ext-cronos:hover img { opacity: 0.8; }
+
   /* 左右の余白を縮める（未使用のサイドバー領域を使ってコンテンツを広げる） */
   @media (min-width: 64em) {
     .page {

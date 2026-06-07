@@ -22,6 +22,11 @@ redirect_from:
 
 <p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、サーフェス型無線、スキンデバイス、NFC VHBR（高速NFC）</p>
 
+<div class="ext-links">
+  <a class="ext-gh" href="https://github.com/yokota-cronos" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">GitHub</span></a>
+  <a class="ext-cronos" href="https://www.jst.go.jp/kisoken/cronos/" target="_blank" rel="noopener" title="JST CRONOS"><img src="{{ base_path }}/images/cronos_logo.jpg" alt="JST CRONOS"></a>
+</div>
+
 <h2 id="news">News</h2>
 
 {% assign news = site.data.news | sort: "key" | reverse %}
