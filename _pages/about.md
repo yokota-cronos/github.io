@@ -16,19 +16,6 @@ redirect_from:
   <h1 class="hero-title">Full-body Wireless Data and Power Networking</h1>
 </div>
 
-<span id="overview"></span>
-
-皮膚に溶け込む超薄型センサー「スキンイメージャー」が、24時間365日、あなたの身体の声を聴き続ける。そんな未来の実現に向け、私たちは衣服そのものを安全な「二次元無線通信・給電インフラ」へと変貌させる、物理層からMAC層にわたる新設計に挑んでいます。周囲の空間から完全にアイソレートされた服型インフラが、5〜6個のセンサーへ5W級のワイヤレス給電を常時行い、そこから溢れ出る大容量の生体データを50 Mbps級の超セキュアなストリーミングで半日以上クラウドへと紡ぎ続けます。目指すのは「病院に通う医療」から「日常に溶け込む予防医療」への転換です。病院インフラを社会へ分散させ、過疎地や災害現場でも誰もが最先端の医療アクセスを享受できる世界へ。二次元無線技術とスキンエレクトロニクスが融合する新時代を切り拓き、未来を担う次世代の人材を育成します。
-
-この壮大なビジョンを共に社会実装へと導く、情熱を持ったポスドクおよびRA（リサーチアシスタント）を募集しています。現在は、東京大学（横田研究室）、高知工科大学（野田研究室）、公立はこだて未来大学（石田研究室）の各研究室にてメンバーを募集中です。専門分野の枠を超え、世界を変える次世代の医療・通信インフラを一緒に創り上げましょう。
-
-<p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、二次元無線技術、スキンエレクトロニクス、NFC VHBR（高速NFC）</p>
-
-<div class="ext-links">
-  <a class="ext-gh" href="https://github.com/yokota-cronos" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">GitHub</span></a>
-  <a class="ext-cronos" href="https://www.jst.go.jp/kisoken/cronos/" target="_blank" rel="noopener" title="JST CRONOS"><img src="{{ base_path }}/images/cronos_logo.jpg" alt="JST CRONOS"></a>
-</div>
-
 <h2 id="news">News</h2>
 
 {% assign news = site.data.news | sort: "key" | reverse %}
@@ -45,6 +32,19 @@ redirect_from:
 {% endfor %}
 </div>
 {% if news.size > 4 %}<p class="news-more"><a href="{{ base_path }}/news/">View all news →</a></p>{% endif %}
+
+<span id="overview"></span>
+
+皮膚に溶け込む超薄型センサー「スキンイメージャー」が、24時間365日、あなたの身体の声を聴き続ける。そんな未来の実現に向け、私たちは衣服そのものを安全な「二次元無線通信・給電インフラ」へと変貌させる、物理層からMAC層にわたる新設計に挑んでいます。周囲の空間から完全にアイソレートされた服型インフラが、5〜6個のセンサーへ5W級のワイヤレス給電を常時行い、そこから溢れ出る大容量の生体データを50 Mbps級の超セキュアなストリーミングで半日以上クラウドへと紡ぎ続けます。目指すのは「病院に通う医療」から「日常に溶け込む予防医療」への転換です。病院インフラを社会へ分散させ、過疎地や災害現場でも誰もが最先端の医療アクセスを享受できる世界へ。二次元無線技術とスキンエレクトロニクスが融合する新時代を切り拓き、未来を担う次世代の人材を育成します。
+
+この壮大なビジョンを共に社会実装へと導く、情熱を持ったポスドクおよびRA（リサーチアシスタント）を募集しています。現在は、東京大学（横田研究室）、高知工科大学（野田研究室）、公立はこだて未来大学（石田研究室）の各研究室にてメンバーを募集中です。専門分野の枠を超え、世界を変える次世代の医療・通信インフラを一緒に創り上げましょう。
+
+<p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、二次元無線技術、スキンエレクトロニクス、NFC VHBR（高速NFC）</p>
+
+<div class="ext-links">
+  <a class="ext-gh" href="https://github.com/yokota-cronos" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">GitHub</span></a>
+  <a class="ext-cronos" href="https://www.jst.go.jp/kisoken/cronos/" target="_blank" rel="noopener" title="JST CRONOS"><img src="{{ base_path }}/images/cronos_logo.jpg" alt="JST CRONOS"></a>
+</div>
 
 <h2 id="team">Team</h2>
 
