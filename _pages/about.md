@@ -39,9 +39,6 @@ redirect_from:
 - 病院インフラの分散化や、**過疎地・災害現場での代替医療**
 - 二次元無線技術とスキンエレクトロニクスの両分野で卓越した人材の育成
 
-<p class="keywords"><strong>キーワード / Keywords:</strong>
-CRONOS・横田知之・生体データ通信・全身無線通信・給電服・メアンダコイル服・電子テキスタイル（Wearable E-textiles）・スキンデバイス（Skin device）・スキンイメージャー（Skin imager）・二次元無線通信・ウェアラブル（Wearable computing）</p>
-
 <h2 id="members">メンバー / Team</h2>
 
 <div class="member-grid">
