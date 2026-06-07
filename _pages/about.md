@@ -33,7 +33,7 @@ redirect_from:
 <div class="news-grid">
 {% for n in news limit:4 %}
   {% if n.url and n.url != "" %}<a class="news-card" href="{{ n.url }}" target="_blank" rel="noopener">{% else %}<div class="news-card">{% endif %}
-    {% if n.image and n.image != "" %}<img class="news-thumb" src="{{ base_path }}/images/news/{{ n.image }}" alt="">{% else %}<div class="news-thumb news-thumb--ph"></div>{% endif %}
+    {% if n.image and n.image != "" %}<img class="news-thumb" loading="lazy" src="{{ base_path }}/images/news/{{ n.image }}" alt="">{% else %}<div class="news-thumb news-thumb--ph"></div>{% endif %}
     <div class="news-card-body">
       <div class="news-card-title">{{ n.title }}</div>
       <div class="news-card-text">{{ n.text }}</div>
@@ -50,7 +50,7 @@ redirect_from:
 {% for m in site.data.members %}
   <div class="member-card{% if m.bio and m.bio != '' %} has-bio{% endif %}" tabindex="0">
     {% if m.bio and m.bio != "" %}<div class="member-bio" role="tooltip">{{ m.bio }}</div>{% endif %}
-    <img class="member-photo" src="{{ base_path }}/images/members/{{ m.photo }}" alt="{{ m.name_ja }}">
+    <img class="member-photo" loading="lazy" src="{{ base_path }}/images/members/{{ m.photo }}" alt="{{ m.name_ja }}">
     <div class="member-name">{{ m.name_ja }}{% if m.bio and m.bio != "" %} <span class="bio-hint" title="経歴を表示">ⓘ</span>{% endif %}</div>
     <div class="member-name-en">{{ m.name_en }}</div>
     <div class="member-role">{{ m.role }}</div>
@@ -121,6 +121,6 @@ redirect_from:
 </div>
 
 <div class="acknowledgement">
-  <img class="ack-logo" src="{{ base_path }}/images/cronos_logo.jpg" alt="JST CRONOS">
+  <img class="ack-logo" loading="lazy" src="{{ base_path }}/images/cronos_logo.jpg" alt="JST CRONOS">
   <p class="ack-text">本プロジェクトは、JST CRONOS 2025年度採択課題「生体データ通信インフラの無線フルボディ化」（JST CRONOS JPMJCS25N4）の支援を受けたものです。</p>
 </div>

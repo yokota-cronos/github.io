@@ -11,7 +11,7 @@ author_profile: false
 <div class="news-grid">
 {% for n in news %}
   {% if n.url and n.url != "" %}<a class="news-card" href="{{ n.url }}" target="_blank" rel="noopener">{% else %}<div class="news-card">{% endif %}
-    {% if n.image and n.image != "" %}<img class="news-thumb" src="{{ base_path }}/images/news/{{ n.image }}" alt="">{% else %}<div class="news-thumb news-thumb--ph"></div>{% endif %}
+    {% if n.image and n.image != "" %}<img class="news-thumb" loading="lazy" src="{{ base_path }}/images/news/{{ n.image }}" alt="">{% else %}<div class="news-thumb news-thumb--ph"></div>{% endif %}
     <div class="news-card-body">
       <div class="news-card-title">{{ n.title }}</div>
       <div class="news-card-text">{{ n.text }}</div>
