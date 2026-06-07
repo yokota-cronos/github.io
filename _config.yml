@@ -9,8 +9,8 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "CRONOS ｜ 生体データ通信インフラの無線フルボディ化"
-masthead_title           : "CRONOS"
+title                    : "JST CRONOS ｜ 生体データ通信インフラの無線フルボディ化"
+masthead_title           : "JST CRONOS"
 title_separator          : "-"
 name                     : &name "CRONOS Project"
 description              : &description "横田知之（東京大学）らによる JST CRONOS 2025・中尾領域プロジェクト。全身無線通信・給電服／メアンダコイル服による生体データ通信インフラ、電子テキスタイル（Wearable E-textiles）、スキンデバイス・スキンイメージャーの研究。Full-body Wireless Data and Power Networking."   # Update this with a general description of your site, this is the default if not overridden by a page

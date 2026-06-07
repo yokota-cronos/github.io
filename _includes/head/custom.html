@@ -362,4 +362,42 @@
     clip: rect(0,0,0,0); border: 0;
   }
 </style>
+
+<!-- ナビ等のページ内リンク: スクロールするが URL に #... を残さない -->
+<script>
+(function () {
+  function headerOffset() {
+    var m = document.querySelector('.masthead');
+    if (!m) return 0;
+    var pos = getComputedStyle(m).position;
+    return (pos === 'fixed' || pos === 'sticky') ? m.offsetHeight + 8 : 0;
+  }
+  function scrollToId(id) {
+    var el = document.getElementById(id);
+    if (!el) return false;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset();
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    return true;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var i = href.indexOf('#');
+    if (i < 0) return;
+    var id = href.slice(i + 1);
+    if (!id || !document.getElementById(id)) return; // 別ページのアンカー等はそのまま
+    e.preventDefault();
+    scrollToId(id);
+    history.replaceState(null, '', location.pathname + location.search);
+  });
+  window.addEventListener('load', function () {
+    if (location.hash && location.hash.length > 1) {
+      if (scrollToId(location.hash.slice(1))) {
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+    }
+  });
+})();
+</script>
 <!-- end custom head snippets -->
