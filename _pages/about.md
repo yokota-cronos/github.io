@@ -20,7 +20,7 @@ redirect_from:
 
 皮膚に密着する「スキンイメージャー」の大容量生体データを半日以上クラウドへ連続ストリーミングする、服型の生体データ通信インフラを実現します。周囲の空間とアイソレートした服型の二次元無線通信・給電インフラを、物理層から MAC 層まで設計します。5〜6 つの「スキンイメージャー」を半日以上連続駆動するために、50 Mbps 級のセキュアな無線通信と 5 W 級の安全な給電ができる「全身無線通信・給電服」を実現します。病後の通院治療から日常の予防医療へ。病院インフラの分散化や過疎地・災害現場での代替医療、二次元無線技術×スキンエレクトロニクスの人材育成を目指します。
 
-<p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、サーフェス型無線、スキンデバイス、NFC VHBR（高速NFC）</p>
+<p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、二次元無線技術、スキンエレクトロニクス、NFC VHBR（高速NFC）</p>
 
 <div class="ext-links">
   <a class="ext-gh" href="https://github.com/yokota-cronos" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">GitHub</span></a>
