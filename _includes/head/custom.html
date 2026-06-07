@@ -298,6 +298,27 @@
     border: 0;
     display: block;
   }
+  /* 地図クリックで Google マップを新規タブで開く（iframe 自体の操作は無効化） */
+  .loc-map-link { display: block; position: relative; cursor: pointer; }
+  .loc-map-link .loc-map { pointer-events: none; }
+  .loc-map-link::after {
+    content: "Google マップで開く ↗";
+    position: absolute;
+    right: 8px; bottom: 8px;
+    z-index: 3;
+    background: rgba(255,255,255,0.92);
+    color: #1565c0;
+    font-size: 0.72em;
+    font-weight: 700;
+    padding: 0.25em 0.6em;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+  .loc-map-link:hover::after,
+  .loc-map-link:focus-visible::after { opacity: 1; }
   .loc-badge {
     position: absolute;
     top: 10px; left: 10px;
