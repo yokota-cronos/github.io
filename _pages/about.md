@@ -43,7 +43,7 @@ redirect_from:
   {% if n.url and n.url != "" %}</a>{% else %}</div>{% endif %}
 {% endfor %}
 </div>
-<p class="news-more"><a href="{{ base_path }}/news/">View all news →</a></p>
+{% if news.size > 5 %}<p class="news-more"><a href="{{ base_path }}/news/">View all news →</a></p>{% endif %}
 
 <h2 id="members">メンバー / Team</h2>
 
