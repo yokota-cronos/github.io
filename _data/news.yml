@@ -15,6 +15,13 @@
   image: "ral_award.jpg"
   url: ""
 
+- key: "2026-02-27-1"
+  date: "2026-02-27"
+  title: "船井研究奨励賞を受賞"
+  text: "高橋が2025年度 船井研究奨励賞を受賞しました。"
+  image: ""
+  url: ""
+
 - key: "2025-10-01-2"
   date: "2025-10-01"
   title: "Presented at ACM UIST '25"
