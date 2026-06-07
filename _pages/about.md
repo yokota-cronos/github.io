@@ -18,18 +18,20 @@ redirect_from:
 
 <h2 id="overview">Overview</h2>
 
-皮膚に密着する「スキンイメージャー」の大容量生体データを半日以上クラウドへ連続ストリーミングする、**服型の生体データ通信インフラ**を実現します。周囲の空間とアイソレートした服型の**二次元無線通信・給電インフラ**を、物理層から MAC 層まで設計します。
+皮膚に密着する「スキンイメージャー」の大容量生体データを半日以上クラウドへ連続ストリーミングする、服型の生体データ通信インフラを実現します。周囲の空間とアイソレートした服型の二次元無線通信・給電インフラを、物理層から MAC 層まで設計します。
 
-<blockquote class="grand-challenge">
-5〜6 つの「スキンイメージャー」を<strong>半日以上連続駆動</strong>するために、<strong>50 Mbps 級のセキュアな無線通信</strong>と <strong>5 W 級の安全な給電</strong>ができる<strong>「全身無線通信・給電服」</strong>を実現する。<br>
-<span class="en">We realize <em>"full-body wireless data and power clothing"</em> capable of secure wireless communication at <strong>50 Mbps</strong> and safe wireless power at <strong>5 W</strong>, to continuously operate <em>"skin imagers"</em> around the body.</span>
-</blockquote>
+<p class="grand-challenge">
+5〜6 つの「スキンイメージャー」を半日以上連続駆動するために、50 Mbps 級のセキュアな無線通信と 5 W 級の安全な給電ができる「全身無線通信・給電服」を実現する。<br>
+<span class="en">We realize "full-body wireless data and power clothing" capable of secure wireless communication at 50 Mbps and safe wireless power at 5 W, to continuously operate "skin imagers" around the body.</span>
+</p>
 
-病後の通院治療から日常の**予防医療**へ。病院インフラの分散化や過疎地・災害現場での代替医療、二次元無線技術×スキンエレクトロニクスの人材育成を目指します。
+病後の通院治療から日常の予防医療へ。病院インフラの分散化や過疎地・災害現場での代替医療、二次元無線技術×スキンエレクトロニクスの人材育成を目指します。
+
+<p class="keywords">キーワード： 生体データ通信、全身無線通信・給電服、メアンダコイル、サーフェス型無線、スキンデバイス</p>
 
 <h2 id="news">News</h2>
 
-{% assign news = site.data.news | sort: "date" | reverse %}
+{% assign news = site.data.news | sort: "key" | reverse %}
 <div class="news-grid">
 {% for n in news limit:5 %}
   {% if n.url and n.url != "" %}<a class="news-card" href="{{ n.url }}" target="_blank" rel="noopener">{% else %}<div class="news-card">{% endif %}

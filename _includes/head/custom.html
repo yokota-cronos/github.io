@@ -33,12 +33,7 @@
   .hero-title { color: #fff; font-size: 1.9em; line-height: 1.35; margin: 0.1em 0; border: none; }
   .hero-subtitle { font-size: 1.05em; opacity: 0.92; margin: 0.3em 0 0; }
 
-  .grand-challenge {
-    background: #f3f7fb;
-    border-left: 5px solid #1565c0;
-    padding: 1em 1.2em;
-    border-radius: 4px;
-  }
+  .grand-challenge { margin: 1em 0; }
   .grand-challenge .en { display: block; margin-top: 0.7em; font-size: 0.9em; color: #555; }
 
   .keywords {
@@ -48,6 +43,17 @@
     border-radius: 6px;
     padding: 0.6em 0.9em;
     margin: 1.5em 0;
+  }
+
+  /* 左右の余白を縮める（未使用のサイドバー領域を使ってコンテンツを広げる） */
+  @media (min-width: 64em) {
+    .page {
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-right: 0 !important;
+      float: none !important;
+    }
   }
 
   /* Member grid */
@@ -121,7 +127,7 @@
   .member-name { font-weight: 700; font-size: 1.05em; }
   .member-name-en { font-size: 0.85em; color: #777; }
   .member-role { font-size: 0.85em; color: #1565c0; margin-top: 0.3em; }
-  .member-aff { font-size: 0.8em; color: #555; margin-top: 0.2em; line-height: 1.4; word-break: keep-all; overflow-wrap: anywhere; }
+  .member-aff { font-size: 0.8em; color: #555; margin-top: 0.2em; line-height: 1.4; word-break: keep-all; }
   .member-links {
     margin-top: 0.7em;
     display: flex;
@@ -234,18 +240,23 @@
 
   /* Acknowledgement / funding */
   .acknowledgement {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1.8em;
     margin: 3em 0 1em;
     padding-top: 2em;
     border-top: 1px solid #eee;
   }
-  .ack-logo { max-width: 260px; width: 60%; height: auto; }
+  .ack-logo { flex: 0 0 auto; max-width: 240px; width: 38%; height: auto; }
   .ack-text {
+    flex: 1;
     font-size: 0.82em;
     color: #666;
-    max-width: 640px;
-    margin: 1em auto 0;
+    margin: 0;
     line-height: 1.7;
+  }
+  @media (max-width: 600px) {
+    .acknowledgement { flex-direction: column; text-align: center; }
   }
 
   .sr-only {

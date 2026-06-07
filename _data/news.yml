@@ -1,27 +1,30 @@
-# お知らせ / News（カード表示）。新しい項目を上に追加（date の降順で自動表示）。
-# date:  日付（"2025-09" や "2025-09-01" など文字列）
-# title: 見出し（太字で表示）
+# お知らせ / News（カード表示）。
+# key:   並び替え用キー（降順で表示）。同じ日付でも順番を制御できる。
+# date:  カードに表示する日付（"2025-10-01" など）
+# title: 見出し
 # text:  簡潔な説明
 # image: カード上部の画像ファイル名（images/news/ に置く。空 "" ならプレースホルダ表示）
 # url:   リンク（空 "" ならクリック不可）
 #
-# ホームには最新5件を表示し、全件は /news/ ページに表示されます。
-# ※「（サンプル）」の項目は内容を差し替えてください。
+# ホームには最新5件、全件は /news/ ページに表示されます。
 
-- date: "2026-06-04"
+- key: "2026-06-04-1"
+  date: "2026-06-04"
   title: "IEEE RA-L 2025 Best Paper Award を受賞"
-  text: "論文「Joint-Repositionable Inner-Wireless Planar Snake Robot」が IEEE Robotics and Automation Letters (RA-L) 2025 Best Paper Award を受賞しました。"
+  text: "高橋らが、IEEE Robotics and Automation Letters (RA-L) 2025 Best Paper Award を受賞しました。"
   image: "ral_award.jpg"
   url: ""
 
-- date: "2025-10"
+- key: "2025-10-01-2"
+  date: "2025-10-01"
   title: "Presented at ACM UIST '25"
   text: "「Ultra-low-power ring-based wireless tinymouse」を ACM UIST '25 にて発表しました。"
   image: ""
   url: "https://dl.acm.org/doi/10.1145/3746059.3747615"
 
-- date: "2025-10"
+- key: "2025-10-01-1"
+  date: "2025-10-01"
   title: "Selected for JST CRONOS 2025"
   text: "JST CRONOS 2025年度 中尾領域に本プロジェクトが採択されました。"
-  image: ""
+  image: "cronos.jpg"
   url: ""
