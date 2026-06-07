@@ -64,7 +64,7 @@
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 2s ease;
   }
   .hero-slide.is-active { opacity: 1; }
 
@@ -458,7 +458,7 @@
       slides[i].classList.remove('is-active');
       i = (i + 1) % slides.length;
       slides[i].classList.add('is-active');
-    }, 3000);
+    }, 5000);
   });
 })();
 </script>
