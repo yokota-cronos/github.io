@@ -44,6 +44,22 @@ def fetch(doi):
         return None
 
 
+def fetch_bibtex(doi):
+    """Official BibTeX for the DOI via Crossref content negotiation."""
+    url = ("https://api.crossref.org/works/%s/transform/application/x-bibtex"
+           % urllib.parse.quote(doi))
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "cronos-web/1.0 (mailto:%s)" % MAILTO,
+        "Accept": "application/x-bibtex",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return r.read().decode("utf-8", "replace").strip()
+    except Exception as e:  # noqa: BLE001
+        print("  bibtex fetch failed for %s: %s" % (doi, e), file=sys.stderr)
+        return ""
+
+
 def first(x):
     if isinstance(x, list):
         return x[0] if x else ""
@@ -103,7 +119,7 @@ def main():
         changed = True
 
     # Bibliographic-detail columns are derived from Crossref (no sheet column).
-    for col in ("volume", "number", "pages"):
+    for col in ("volume", "number", "pages", "bibtex"):
         if col not in fields:
             fields.append(col)
             changed = True
@@ -150,6 +166,15 @@ def main():
             val = str(v).strip() if v else ""
             if (row.get(col) or "") != val:
                 row[col] = val
+                changed = True
+        # Official BibTeX straight from the DOI (Crossref), never self-made.
+        bib = fetch_bibtex(doi)
+        time.sleep(1)
+        if bib:
+            bib = re.sub(r',\s+(\w+=)', r',\n  \1', bib)
+            bib = re.sub(r'\s*\}\s*$', '\n}', bib).strip()
+            if (row.get("bibtex") or "") != bib:
+                row["bibtex"] = bib
                 changed = True
         print("  enriched %s -> %s" % (doi, (row.get("title") or "")[:60]))
 

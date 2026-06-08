@@ -97,9 +97,9 @@ redirect_from:
         {% assign yt = p.youtube | default: p.video %}{% if yt and yt != "" %}<a href="{{ yt }}" target="_blank" rel="noopener">YouTube</a>{% endif %}
         {% if p.press and p.press != "" %}<a href="{{ p.press }}" target="_blank" rel="noopener">Press</a>{% endif %}
         {% if p.media and p.media != "" %}{% assign mediaurls = p.media | newline_to_br | replace: "<br />", " " | replace: "<br>", " " | replace: ",", " " | replace: ";", " " | replace: "|", " " | split: " " %}{% for murl in mediaurls %}{% assign m = murl | strip %}{% if m != "" and m contains "http" %}{% assign mhost = m | split: "//" | last | split: "/" | first | replace: "www.","" %}{% assign mname = mhost | split: "." | first | capitalize %}<a href="{{ m }}" target="_blank" rel="noopener">Media ({{ mname }})</a>{% endif %}{% endfor %}{% endif %}
-        {% assign fa2 = p.authors | split: "," | first | strip | split: " " | last %}{% assign tw2 = p.title | replace: "*","" | strip | split: " " | first | replace: ":","" | replace: ",","" %}{% assign citekey = fa2 | append: p.year | append: tw2 %}{% capture bibtext %}{% include bibtex.html p=p key=citekey %}{% endcapture %}<a href="#" class="pub-bib" role="button">BibTeX</a>
+        {% if p.bibtex and p.bibtex != "" %}<a href="#" class="pub-bib" role="button">BibTeX</a>{% endif %}
       </div>
-      <pre class="bib-pre" hidden>{{ bibtext | strip | escape }}</pre>
+      {% if p.bibtex and p.bibtex != "" %}<pre class="bib-pre" hidden>{{ p.bibtex | escape }}</pre>{% endif %}
     </div>
     {% if p.image and p.image != "" %}
     <div class="pub-thumb">{% if p.image contains "http" %}<img loading="lazy" src="{{ p.image }}" alt="">{% else %}<img loading="lazy" src="{{ base_path }}/images/publications/{{ p.image }}" alt="">{% endif %}</div>
