@@ -2,6 +2,16 @@
 
 <!-- start custom head snippets -->
 
+<!-- デフォルトテーマを Light に固定（OS が Dark でも初期表示は White）。
+     ユーザーがトグルで切り替えた場合はその選択を尊重する。 -->
+<script>
+  try {
+    if (!localStorage.getItem('theme')) {
+      localStorage.setItem('theme', 'light');
+    }
+  } catch (e) {}
+</script>
+
 <!-- SEO keywords -->
 <meta name="keywords" content="CRONOS, JST CRONOS, 横田知之, Tomoyuki Yokota, 高橋亮, Ryo Takahashi, 野田聡人, Akihito Noda, 石田繁巳, Shigemi Ishida, 生体データ通信, 全身無線通信・給電服, メアンダコイル服, 電子テキスタイル, Wearable E-textiles, E-textiles, スキンデバイス, Skin device, スキンイメージャー, Skin imager, ウェアラブル, Wearable computing, 二次元無線通信, ワイヤレス給電, 給電服, NFC, NFC-VHBR, Healthcare, biological data transmission, 東京大学, 東大, The University of Tokyo, UTokyo, 高知工科大学, 高知工科大, Kochi University of Technology, KUT, 公立はこだて未来大学, はこだて未来大学, 未来大, Future University Hakodate, FUN">
 
@@ -319,6 +329,10 @@
   .news-card-text { font-size: 0.85em; color: #5b6b7b; line-height: 1.6; }
   .news-card-date { font-size: 0.78em; font-weight: 700; color: #1565c0; margin-top: 0.7em; }
   .news-more { text-align: right; margin: 0.2em 0 0; font-size: 0.9em; }
+  /* スマートフォンでは News を 2 件だけ表示 */
+  @media (max-width: 600px) {
+    .news-grid .news-card:nth-child(n+3) { display: none; }
+  }
 
   /* Locations */
   .loc-grid {
