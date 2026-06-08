@@ -441,6 +441,25 @@
     scrollToId(id);
     stripHash();
   }, true);
+  /* 左上のブランド名（JST CRONOS）: ホームならリロードせずトップへスムーズスクロール */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('.masthead__menu-item--lg a');
+    if (!a) return;
+    var onHome = location.pathname === '/' || location.pathname === '/index.html';
+    if (!onHome) return; /* 別ページからはそのままトップページへ遷移 */
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var supportsSmooth = 'scrollBehavior' in document.documentElement.style;
+    if (supportsSmooth) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    } else {
+      /* スムーズスクロール非対応ブラウザは確実に最上部へジャンプ */
+      window.scrollTo(0, 0);
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    }
+    stripHash();
+  }, true);
   /* 何かが # を付けても即座に消す（保険） */
   window.addEventListener('hashchange', stripHash);
   window.addEventListener('load', function () {
