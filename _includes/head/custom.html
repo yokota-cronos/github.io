@@ -473,10 +473,11 @@
     scrollToId(id);
     stripHash();
   }, true);
-  /* 左上のブランド名（JST CRONOS）: ホームならリロードせずトップへスムーズスクロール */
+  /* 左上のブランド名（JST CRONOS）: ホームならリロードせずトップへスムーズスクロール。
+     リンク文字だけでなく親 li（余白部分）のクリックも拾う。 */
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('.masthead__menu-item--lg a');
-    if (!a) return;
+    var item = e.target.closest && e.target.closest('.masthead__menu-item--lg');
+    if (!item) return;
     var onHome = location.pathname === '/' || location.pathname === '/index.html';
     if (!onHome) return; /* 別ページからはそのままトップページへ遷移 */
     e.preventDefault();
