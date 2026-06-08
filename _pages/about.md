@@ -90,7 +90,7 @@ redirect_from:
         {% if p.code and p.code != "" %}<a href="{{ p.code }}" target="_blank" rel="noopener">Code</a>{% endif %}
         {% assign yt = p.youtube | default: p.video %}{% if yt and yt != "" %}<a href="{{ yt }}" target="_blank" rel="noopener">YouTube</a>{% endif %}
         {% if p.press and p.press != "" %}<a href="{{ p.press }}" target="_blank" rel="noopener">Press</a>{% endif %}
-        {% if p.media and p.media != "" %}{% assign mhost = p.media | split: "//" | last | split: "/" | first | replace: "www.","" %}{% assign mname = mhost | split: "." | first | capitalize %}<a href="{{ p.media }}" target="_blank" rel="noopener">Media ({{ mname }})</a>{% endif %}
+        {% if p.media and p.media != "" %}{% assign mediaurls = p.media | newline_to_br | replace: "<br />", " " | replace: "<br>", " " | replace: ",", " " | replace: ";", " " | replace: "|", " " | split: " " %}{% for murl in mediaurls %}{% assign m = murl | strip %}{% if m != "" and m contains "http" %}{% assign mhost = m | split: "//" | last | split: "/" | first | replace: "www.","" %}{% assign mname = mhost | split: "." | first | capitalize %}<a href="{{ m }}" target="_blank" rel="noopener">Media ({{ mname }})</a>{% endif %}{% endfor %}{% endif %}
       </div>
     </div>
     {% if p.image and p.image != "" %}
