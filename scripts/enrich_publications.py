@@ -86,6 +86,22 @@ def main():
 
     changed = False
 
+    # Normalize the (symbol-laden) marker column headers to stable names.
+    rename = {}
+    for h in fields:
+        n = "".join(ch for ch in h.lower() if ch.isalnum())
+        if n.startswith("first"):
+            rename[h] = "first_authors"
+        elif n.startswith("cores") or n.startswith("corresp"):
+            rename[h] = "corresponding_authors"
+    if rename:
+        fields = [rename.get(h, h) for h in fields]
+        for row in rows:
+            for old, new in rename.items():
+                if old in row:
+                    row[new] = row.pop(old)
+        changed = True
+
     # Bibliographic-detail columns are derived from Crossref (no sheet column).
     for col in ("volume", "number", "pages"):
         if col not in fields:

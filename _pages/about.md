@@ -87,7 +87,7 @@ redirect_from:
   {% if p.title and p.title != "" %}
   <div class="pub-entry">
     <div class="pub-main">
-      {% if p.authors and p.authors != "" %}{% capture authorsfmt %}{% assign alist = p.authors | split: "," %}{% for a in alist %}{% assign a = a | strip %}{% if a != "" %}{% assign parts = a | split: " " %}{% for part in parts %}{% if part != "" %}{% if forloop.last %}{{ part }}{% else %}{{ part | slice: 0 }}. {% endif %}{% endif %}{% endfor %}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %}{% endcapture %}<div class="pub-authors">{{ authorsfmt | strip }}</div>{% endif %}
+      {% if p.authors and p.authors != "" %}{% assign fn = p.first_authors | default: "" | replace: ", ", "|" | replace: ",", "|" | strip %}{% assign first_norm = "|" | append: fn | append: "|" %}{% assign cn = p.corresponding_authors | default: "" | replace: ", ", "|" | replace: ",", "|" | strip %}{% assign corr_norm = "|" | append: cn | append: "|" %}{% capture authorsfmt %}{% assign alist = p.authors | split: "," %}{% for a in alist %}{% assign a = a | strip %}{% if a != "" %}{% assign parts = a | split: " " %}{% for part in parts %}{% if part != "" %}{% if forloop.last %}{{ part }}{% else %}{{ part | slice: 0 }}. {% endif %}{% endif %}{% endfor %}{% assign namekey = "|" | append: a | append: "|" %}{% if first_norm contains namekey %}*{% endif %}{% if corr_norm contains namekey %}†{% endif %}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %}{% endcapture %}<div class="pub-authors">{{ authorsfmt | strip }}</div>{% endif %}
       <div class="pub-title">{{ p.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}</div>
       {% assign venue = p.publisher | default: p.venue %}{% if venue and venue != "" %}<div class="pub-venue"><span class="pub-venue-name">{{ venue }}</span>{% if p.volume and p.volume != "" %}, {{ p.volume }}{% if p.number and p.number != "" %}({{ p.number }}){% endif %}{% elsif p.number and p.number != "" %}, Article No. {{ p.number }}{% endif %}{% if p.pages and p.pages != "" %}, pp.{{ p.pages }}{% endif %}{% if p.year and p.year != "" %} ({{ p.year }}){% endif %}</div>{% endif %}
       <div class="pub-links">
@@ -108,6 +108,7 @@ redirect_from:
 {% endfor %}
 </div>
 {% endfor %}
+<p class="pub-foot">* first author　† corresponding author</p>
 
 <h2 id="award">Award</h2>
 
