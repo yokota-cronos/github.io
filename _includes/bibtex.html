@@ -1,0 +1,23 @@
+{%- comment -%}
+Render a single BibTeX entry for a publication.
+Usage: {% include bibtex.html p=p key=citekey %}
+{%- endcomment -%}
+{%- assign p = include.p -%}
+{%- assign ob = "{" -%}
+{%- assign bibauthors = p.authors | strip | replace: ", ", " and " -%}
+{%- assign btitle = p.title | replace: "**", "" | replace: "*", "" | strip -%}
+{%- assign venue = p.publisher | default: p.venue -%}
+{%- if p.volume and p.volume != "" -%}{%- assign etype = "article" -%}{%- else -%}{%- assign etype = "inproceedings" -%}{%- endif -%}
+{%- assign bdoi = "" -%}{%- if p.doi contains "/10." -%}{%- assign bdoi = p.doi | split: "/10." | last | prepend: "10." -%}{%- endif -%}
+@{{ etype }}{{ ob }}{{ include.key }},
+  author = {{ ob }}{{ bibauthors }}},
+  title = {{ ob }}{{ btitle }}},
+{% if etype == "article" %}  journal = {{ ob }}{{ venue }}},
+{% else %}  booktitle = {{ ob }}{{ venue }}},
+{% endif %}  year = {{ ob }}{{ p.year }}},
+{% if p.volume and p.volume != "" %}  volume = {{ ob }}{{ p.volume }}},
+{% endif %}{% if p.number and p.number != "" %}  number = {{ ob }}{{ p.number }}},
+{% endif %}{% if p.pages and p.pages != "" %}  pages = {{ ob }}{{ p.pages }}},
+{% endif %}{% if bdoi != "" %}  doi = {{ ob }}{{ bdoi }}},
+{% endif %}{% if p.doi and p.doi != "" %}  url = {{ ob }}{{ p.doi }}}
+{% endif %}}

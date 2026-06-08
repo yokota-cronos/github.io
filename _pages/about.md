@@ -76,6 +76,8 @@ redirect_from:
 
 <h2 id="publication">Publication</h2>
 
+<p class="bib-export-wrap"><a class="bib-export" href="{{ base_path }}/publications.bib" download="cronos-publications.bib"><i class="ai ai-zotero" aria-hidden="true"></i> BibTeX をエクスポート（Zotero 等）</a></p>
+
 {% assign pubs = site.data.publications | sort: "year" | reverse %}
 {% assign pubgroups = pubs | group_by: "year" | sort: "name" | reverse %}
 {% for grp in pubgroups %}

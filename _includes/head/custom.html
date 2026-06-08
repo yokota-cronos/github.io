@@ -42,6 +42,9 @@
 <!-- Support for Academicons -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
+<!-- Zotero 等の参照管理ツールが BibTeX を自動検出できるようにする -->
+<link rel="alternate" type="application/x-bibtex" href="{{ base_path }}/publications.bib" title="Publications (BibTeX)"/>
+
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png"/>
 <link rel="icon" type="image/svg+xml" href="{{ base_path }}/images/favicon.svg"/>
@@ -311,6 +314,18 @@
   /* Award タイトルはリンクの有無に関わらず黒・太字・下線なし */
   .pub-list .pub-body a { color: inherit !important; text-decoration: none !important; }
   .pub-list .pub-body a:hover { color: inherit !important; text-decoration: none !important; }
+
+  /* BibTeX エクスポートボタン */
+  .bib-export-wrap { margin: 0.2em 0 0; }
+  .bib-export {
+    display: inline-flex; align-items: center; gap: 0.45em;
+    font-size: 0.85em; font-weight: 700;
+    color: #4385f5 !important; text-decoration: none !important;
+    border: 1px solid #4385f5; border-radius: 8px;
+    padding: 0.35em 0.8em;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .bib-export:hover { background: #4385f5; color: #fff !important; }
 
   /* Publications: 著者 → 太字タイトル → 斜体 venue → リンク行 ＋ 右側サムネイル */
   .pub-list2 { margin: 1.5em 0; }
