@@ -55,6 +55,17 @@
 <style>
   /* フルブリード（100vw）による横スクロール発生を防ぐ */
   body { overflow-x: hidden; }
+  /* マストヘッド（左上のブランド名・区切り・ナビ）の文字を全て青に */
+  .greedy-nav a,
+  .greedy-nav a:visited,
+  .masthead__menu-item--lg a,
+  .masthead__menu-item--lg a:visited {
+    color: #1565c0 !important;
+  }
+  .greedy-nav a:hover,
+  .masthead__menu-item--lg a:hover {
+    color: #0b3d91 !important;
+  }
   /* Hero slideshow (top banner, crossfades between images) */
   .hero-slideshow {
     position: relative;
