@@ -22,6 +22,13 @@
   image: "ral_award.jpg"
   url: "https://www.uec.ac.jp/news/newsrelease/2026/20260605_7740.html"
 
+- key: "2026-03-17-1"
+  date: "2026-03-17"
+  title: "IEICE 北海道支部学生会インターネットシンポジウム 優秀発表賞を受賞"
+  text: "井戸、石田らが IEICE 北海道支部学生会インターネットシンポジウムにて優秀発表賞を受賞"
+  image: "ido_award.jpg"
+  url: "https://www.fun.ac.jp/45516/"
+
 - key: "2026-02-27-1"
   date: "2026-02-27"
   title: "船井研究奨励賞を受賞"
