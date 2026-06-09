@@ -70,3 +70,9 @@
   border-bottom: 2px solid var(--global-text-color);
   /* No need to repeat pointer-events and cursor here */
 }
+
+/* タイトル（サイト名）の選択時は下線を表示しない */
+.masthead__menu-item--lg.selected a,
+.masthead__menu-item--lg.selected a:hover {
+  border-bottom: none;
+}
