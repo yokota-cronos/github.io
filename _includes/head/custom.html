@@ -139,6 +139,23 @@
     transition: opacity 2s ease;
   }
   .hero-slide.is-active { opacity: 1; }
+  /* 画面が十分広いときは front 画像を2枚横並びに（1枚を大きくしすぎない） */
+  @media (min-width: 1024px) {
+    .hero-slideshow {
+      display: flex;
+      gap: 6px;
+      aspect-ratio: auto;
+      height: clamp(300px, 26vw, 440px);   /* 大きくなりすぎないよう高さを制限 */
+    }
+    .hero-slide {
+      position: static;
+      opacity: 1;            /* 2枚とも表示（クロスフェードしない） */
+      flex: 1 1 50%;
+      width: 50%;
+      height: 100%;
+      transition: none;
+    }
+  }
 
   /* Hero */
   .hero {
@@ -493,8 +510,8 @@
   }
   .news-carousel::-webkit-scrollbar { display: none; }   /* WebKit: スクロールバー非表示 */
   .news-carousel .news-card {
-    flex: 0 0 270px;
-    width: 270px;
+    flex: 1 0 270px;     /* 伸びて幅いっぱいを埋める（大画面でも空白なし）。270px未満には縮まずスクロール */
+    width: auto;
     scroll-snap-align: start;
   }
   /* 左右の矢印（ホバー／フォーカス時に表示） */
@@ -703,20 +720,61 @@
     }, 5000);
   });
 
-  /* トップ画像をコンテナのグリッドオフセットに関わらず画面いっぱい（左右余白ゼロ）に。
-     .page が Susy グリッドで中央寄せでないため、実測して margin で補正する。 */
-  function fitHero() {
-    var h = document.querySelector('.hero-slideshow');
-    if (!h) return;
-    h.style.width = '100vw';
-    h.style.marginLeft = '0';
-    h.style.marginRight = '0';
-    var left = h.getBoundingClientRect().left;
-    h.style.marginLeft = (-left) + 'px';
+  /* トップ画像・ニュースカルーセルをコンテナのグリッドオフセットに関わらず
+     画面いっぱい（左右余白ゼロ）に。.page が Susy グリッドで中央寄せでないため、
+     実測して margin で補正する（front 画像と全く同じ仕組み）。 */
+  function bleed(el, pad) {
+    if (!el) return;
+    el.style.width = '100vw';
+    el.style.marginLeft = '0';
+    el.style.marginRight = '0';
+    var left = el.getBoundingClientRect().left;
+    el.style.marginLeft = (-left) + 'px';
+    if (pad != null) { el.style.paddingLeft = pad + 'px'; el.style.paddingRight = pad + 'px'; }
   }
-  window.addEventListener('load', fitHero);
-  window.addEventListener('resize', fitHero);
-  document.addEventListener('DOMContentLoaded', fitHero);
+  function clearBleed(el) {
+    if (!el) return;
+    el.style.width = ''; el.style.marginLeft = ''; el.style.marginRight = '';
+    el.style.paddingLeft = ''; el.style.paddingRight = '';
+  }
+  function updateNewsArrows() {
+    var track = document.querySelector('.news-carousel');
+    var lb = document.querySelector('.news-arrow--left');
+    var rb = document.querySelector('.news-arrow--right');
+    if (!track || !lb || !rb) return;
+    var overflow = track.scrollWidth > track.clientWidth + 2;
+    var max = track.scrollWidth - track.clientWidth - 1;
+    var on = window.innerWidth >= 769;
+    lb.hidden = !on || !overflow || track.scrollLeft <= 0;
+    rb.hidden = !on || !overflow || track.scrollLeft >= max;
+  }
+  function fitWide() {
+    bleed(document.querySelector('.hero-slideshow'), null);
+    var wrap = document.querySelector('.news-carousel-wrap');
+    if (wrap) {
+      if (window.innerWidth >= 769) { bleed(wrap, 6); } else { clearBleed(wrap); }
+    }
+    updateNewsArrows();
+  }
+  // ニュース矢印のクリック/スクロール
+  (function () {
+    var track = document.querySelector('.news-carousel');
+    if (!track) return;
+    var lb = document.querySelector('.news-arrow--left');
+    var rb = document.querySelector('.news-arrow--right');
+    function step() {
+      var c = track.querySelector('.news-card');
+      var w = c ? c.getBoundingClientRect().width : 280;
+      return Math.max(w + 22, track.clientWidth * 0.8);
+    }
+    if (lb) lb.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    if (rb) rb.addEventListener('click', function () { track.scrollBy({ left:  step(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', updateNewsArrows, { passive: true });
+  })();
+  window.addEventListener('load', function () { fitWide(); requestAnimationFrame(fitWide); });
+  window.addEventListener('resize', fitWide);
+  document.addEventListener('DOMContentLoaded', fitWide);
+  setTimeout(fitWide, 300);
 })();
 </script>
 <!-- end custom head snippets -->

@@ -34,63 +34,7 @@ redirect_from:
   <button class="news-arrow news-arrow--right" type="button" aria-label="次のニュース" hidden>&#8250;</button>
 </div>
 {% if news.size > 4 %}<p class="news-more"><a href="{{ base_path }}/news/">View all news →</a></p>{% endif %}
-
-<script>
-(function () {
-  var wrap = document.querySelector('.news-carousel-wrap');
-  if (!wrap) return;
-  var track = wrap.querySelector('.news-carousel');
-  var left  = wrap.querySelector('.news-arrow--left');
-  var right = wrap.querySelector('.news-arrow--right');
-  var PAD = 6;                                       // 画面端からの余白（ほぼゼロ）
-
-  function isPC() { return window.innerWidth >= 769; }
-
-  function layout() {
-    // トップ画像（fitHero）と同じ実績のある方式：
-    // 100vw に広げ、左端を実測して負マージンでビューポート左端へ寄せる
-    wrap.style.width = '';
-    wrap.style.marginLeft = '';
-    wrap.style.marginRight = '';
-    wrap.style.paddingLeft = '';
-    wrap.style.paddingRight = '';
-    if (isPC()) {
-      wrap.style.width = '100vw';
-      wrap.style.marginLeft = '0';
-      wrap.style.marginRight = '0';
-      var left = wrap.getBoundingClientRect().left;          // この時点の左端（＝コンテンツ左端）
-      wrap.style.marginLeft = (-left) + 'px';                // ビューポート左端(0)へ寄せる
-      wrap.style.paddingLeft  = PAD + 'px';                  // 左右はほぼ余白なし
-      wrap.style.paddingRight = PAD + 'px';
-    }
-    update();
-  }
-
-  function step() {
-    var c = track.querySelector('.news-card');
-    var w = c ? c.getBoundingClientRect().width : 300;
-    return Math.max(w + 22, track.clientWidth * 0.8);
-  }
-
-  function update() {
-    if (!left || !right) return;
-    var max = track.scrollWidth - track.clientWidth - 1;
-    var on = isPC();
-    left.hidden  = !on || track.scrollLeft <= 0;
-    right.hidden = !on || track.scrollLeft >= max;
-  }
-
-  if (left)  left.addEventListener('click',  function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
-  if (right) right.addEventListener('click', function () { track.scrollBy({ left:  step(), behavior: 'smooth' }); });
-  track.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', layout);
-  // レイアウト確定後にも再計算（画像/フォント読込やCSS適用前の測定ズレ対策）
-  window.addEventListener('load', function () { layout(); requestAnimationFrame(layout); });
-  setTimeout(layout, 300);
-  if (document.readyState === 'complete') requestAnimationFrame(layout);
-  layout();
-})();
-</script>
+<!-- カルーセルの全幅化・矢印処理は custom.html（fitWide）で実行（about.md インライン script は実行されないため移設） -->
 
 <span id="overview"></span>
 
