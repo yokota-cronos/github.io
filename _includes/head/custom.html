@@ -77,21 +77,27 @@
     outline: none !important;
     box-shadow: none !important;
   }
-  /* サイトブランド（左上）：写真のように大きく2行で表示 */
-  .site-brand {
+  /* サイトブランド（左上）：タイトルを1行で大きく、その下にナビを配置 */
+  .masthead__brand { padding: 0.3em 0 0.2em; }
+  .masthead__brand .site-brand,
+  .masthead__brand .site-brand:visited,
+  .masthead__brand .site-brand:hover {
     display: inline-block;
-    line-height: 1.15;
-  }
-  .site-brand-main {
-    display: block;
-    font-size: 1.7em;
     font-weight: 800;
+    font-size: clamp(1.15rem, 2.5vw, 2rem);
+    line-height: 1.2;
     letter-spacing: 0.01em;
+    white-space: nowrap;
+    color: #4385f5 !important;
+    text-decoration: none;
   }
-  .site-brand-sub {
-    display: block;
-    font-size: 0.92em;
-    font-weight: 600;
+  /* ナビ（タイトル下の行）の先頭リンクは太字にしない */
+  .greedy-nav .visible-links li:first-child { font-weight: normal; }
+  /* 狭い画面ではタイトルを折り返し可に */
+  @media (max-width: 680px) {
+    .masthead__brand .site-brand,
+    .masthead__brand .site-brand:visited,
+    .masthead__brand .site-brand:hover { white-space: normal; font-size: 1.2rem; }
   }
   /* 写真・News などのクリック後に出るアウトラインも消す（影は残す） */
   .concept-fig:focus, .concept-fig:focus-visible,

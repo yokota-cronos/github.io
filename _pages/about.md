@@ -17,7 +17,7 @@ redirect_from:
 </div>
 
 {% assign news = site.data.news | sort: "key" | reverse %}
-<div class="news-carousel-wrap">
+<div class="news-carousel-wrap" id="news">
   <button class="news-arrow news-arrow--left" type="button" aria-label="前のニュース" hidden>&#8249;</button>
   <div class="news-carousel" id="newsCarousel">
 {% for n in news limit:12 %}
@@ -53,11 +53,12 @@ redirect_from:
     wrap.style.paddingRight = '';
     if (isPC()) {
       var vw = document.documentElement.clientWidth;          // スクロールバー幅を除いた表示幅
-      var l  = Math.max(0, wrap.getBoundingClientRect().left);// コンテンツ左端＝自然な左端
+      var l  = Math.max(0, wrap.getBoundingClientRect().left);// 自然な左端
+      var pad = 28;                                           // 画面端からの最小余白（小さめ）
       wrap.style.width = vw + 'px';                           // 端から端まで
       wrap.style.marginLeft = (-l) + 'px';                    // ビューポート左端へ寄せる
-      wrap.style.paddingLeft = l + 'px';                      // 先頭カードをコンテンツ左端に揃える
-      wrap.style.paddingRight = l + 'px';
+      wrap.style.paddingLeft = pad + 'px';                    // 左右の余白は最小限に
+      wrap.style.paddingRight = pad + 'px';
     }
     update();
   }
