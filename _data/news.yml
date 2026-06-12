@@ -41,6 +41,22 @@
   image: "funai_award.jpg"
   url: "https://funaifoundation.jp/news-580.htm"
 
+- key: "2026-01-12-1"
+  date: "2026-01-12"
+  category: "受賞"
+  title: "IEEE CCNC 2026 Best Demo Award を受賞"
+  text: "野田らが IEEE CCNC 2026 にて Best Demo Award を受賞"
+  image: "ccnc_award.jpg"
+  url: "https://www.kochi-tech.ac.jp/news/2026/006922.html"
+
+- key: "2025-12-18-1"
+  date: "2025-12-18"
+  category: "受賞"
+  title: "SI2025 優秀講演賞を3件受賞"
+  text: "久家、髙木、前田、野田らが SI2025（計測自動制御学会 SI部門講演会）にて優秀講演賞を3件受賞"
+  image: "si2025_award.jpg"
+  url: "https://sice-si.org/si2025/excellent_speaker.php"
+
 - key: "2025-11-12-1"
   date: "2025-11-12"
   category: "受賞"
