@@ -78,7 +78,12 @@
   .masthead__menu-item--lg a:hover {
     color: #4385f5 !important;
   }
-  /* クリック/フォーカス時のオレンジ枠（アウトライン）を出さない */
+  /* クリック/フォーカス時のオレンジ枠（アウトライン）を全リンク・ボタンで出さない */
+  a:focus, a:focus-visible,
+  button:focus, button:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
   .greedy-nav a:focus,
   .greedy-nav a:focus-visible,
   .masthead__menu-item--lg a:focus,
