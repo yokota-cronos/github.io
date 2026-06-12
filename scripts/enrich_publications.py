@@ -11,6 +11,7 @@ Usage: python3 scripts/enrich_publications.py [path/to/publications.csv]
 """
 import csv
 import json
+import os
 import re
 import sys
 import time
@@ -18,8 +19,61 @@ import urllib.parse
 import urllib.request
 
 CSV_PATH = sys.argv[1] if len(sys.argv) > 1 else "_data/publications.csv"
+# 前回 (リポジトリにコミット済み) の CSV。ここから pdf / bibtex を引き継ぐ。
+# 環境変数 PREV_CSV、もしくは第2引数で指定。
+PREV_CSV = os.environ.get("PREV_CSV") or (sys.argv[2] if len(sys.argv) > 2 else "")
 MAILTO = "takahashi@akg.t.u-tokyo.ac.jp"
 DOI_RE = re.compile(r'10\.\d{4,9}/[^\s"<>]+')
+
+
+def _norm_title(t):
+    return re.sub(r'[^a-z0-9]', '', (t or '').lower())
+
+
+def preserve_from_prev(rows):
+    """シートに無い列 (pdf, および DOI/arXiv の無い論文の手書き bibtex) を
+    前回 CSV から引き継ぐ。新しい値が空のときだけ前回値で埋める = リポジトリの
+    pdf を優先する。タイトル(正規化)または DOI で突き合わせる。"""
+    if not PREV_CSV or not os.path.exists(PREV_CSV):
+        return False
+    try:
+        with open(PREV_CSV, newline="", encoding="utf-8") as f:
+            prev = list(csv.DictReader(f))
+    except Exception:
+        return False
+    pdf_by_doi, pdf_by_title = {}, {}
+    bib_by_doi, bib_by_title = {}, {}
+    for r in prev:
+        d = extract_doi(r.get("doi", ""))
+        t = _norm_title(r.get("title"))
+        pdf = (r.get("pdf") or "").strip()
+        bib = (r.get("bibtex") or "").strip()
+        if pdf:
+            if d:
+                pdf_by_doi[d.lower()] = pdf
+            if t:
+                pdf_by_title[t] = pdf
+        if bib:
+            if d:
+                bib_by_doi[d.lower()] = bib
+            if t:
+                bib_by_title[t] = bib
+    ch = False
+    for row in rows:
+        d = extract_doi(row.get("doi", ""))
+        dk = d.lower() if d else None
+        tk = _norm_title(row.get("title"))
+        if not (row.get("pdf") or "").strip():
+            pdf = (dk and pdf_by_doi.get(dk)) or pdf_by_title.get(tk)
+            if pdf:
+                row["pdf"] = pdf
+                ch = True
+        if not (row.get("bibtex") or "").strip():
+            bib = (dk and bib_by_doi.get(dk)) or bib_by_title.get(tk)
+            if bib:
+                row["bibtex"] = bib
+                ch = True
+    return ch
 
 
 def extract_doi(s):
@@ -160,6 +214,15 @@ def main():
             changed = True
         for row in rows:
             row.setdefault(col, "")
+    if "pdf" not in fields:
+        fields.append("pdf")
+        for row in rows:
+            row.setdefault("pdf", "")
+        changed = True
+
+    # リポジトリ側で手動管理している pdf / (DOI 無し論文の) bibtex を前回 CSV から引き継ぐ。
+    if preserve_from_prev(rows):
+        changed = True
 
     for row in rows:
         real_doi = extract_doi(row.get("doi", ""))

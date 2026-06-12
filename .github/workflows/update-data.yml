@@ -56,6 +56,8 @@ jobs:
           }
           if [ -n "$PUBLICATIONS_CSV_URL" ]; then
             echo "Fetching publications..."
+            # 上書き前にリポジトリの現行 CSV を退避（pdf / 手書き bibtex の引き継ぎ用）
+            cp _data/publications.csv /tmp/pub_prev.csv 2>/dev/null || true
             curl -sSL "$PUBLICATIONS_CSV_URL" -o _data/publications.csv
             clean _data/publications.csv
           else
@@ -70,6 +72,9 @@ jobs:
           fi
 
       - name: Enrich publications from DOI (fill empty fields via Crossref)
+        env:
+          # 退避した現行 CSV から pdf / 手書き bibtex を引き継ぐ（リポジトリの pdf を優先）
+          PREV_CSV: /tmp/pub_prev.csv
         run: |
           if [ -f _data/publications.csv ]; then
             python3 scripts/enrich_publications.py _data/publications.csv || echo "enrichment skipped"
