@@ -25,7 +25,7 @@
   pages={1–6},
   collection={CHI EA ’26}
 }"
-"2025","Ryo Takahashi, Takashi Sato, Wakako Yukita, Tomoyuki Yokota, Takao Someya, Yoshihiro Kawahara","Full-body WPT: wireless powering with meandered e-textiles","Companion of the 2025 ACM International Joint Conference on Pervasive and Ubiquitous Computing","","https://dl.acm.org/doi/10.1145/3714394.3750714","https://www.youtube.com/watch?v=1u3vBoVZhGk","","https://arxiv.org/abs/2506.17606","","","Ryo Takahashi","Ryo Takahashi","","","529-533","@inproceedings{Takahashi_2025,
+"2025","Ryo Takahashi, Takashi Sato, Wakako Yukita, Tomoyuki Yokota, Takao Someya, Yoshihiro Kawahara","Full-body WPT: wireless powering with meandered e-textiles","ACM ISWC","","https://dl.acm.org/doi/10.1145/3714394.3750714","https://www.youtube.com/watch?v=1u3vBoVZhGk","","https://arxiv.org/abs/2506.17606","","","Ryo Takahashi","Ryo Takahashi","","","529-533","@inproceedings{Takahashi_2025,
   title={Full-body WPT: Wireless Powering with Meandered E-textiles},
   url={http://dx.doi.org/10.1145/3714394.3750714},
   DOI={10.1145/3714394.3750714},
@@ -46,28 +46,7 @@
   year = {2025},
   copyright = {arXiv.org perpetual, non-exclusive license}
 }"
-"2026","Hideaki Yamamoto, Yifan Li, Yoshihiro Kawahara, Ryo Takahashi","picoRing dual: ultralow-power bimanual ring controllers for everyday AR","","picoring_dual.pdf","","","","","","","H. Yamamoto","Ryo Takahashi","","","","@inproceedings{Yamamoto_2026_picoRing_dual,
-  series={ISWC '26},
-  title={picoRing dual: ultralow-power bimanual ring controllers for everyday AR},
-  booktitle={Proceedings of the 2026 ACM International Symposium on Wearable Computers},
-  publisher={ACM},
-  author={Yamamoto, Hideaki and Li, Yifan and Kawahara, Yoshihiro and Takahashi, Ryo},
-  year={2026},
-  pages={1–8},
-  collection={ISWC '26}
-}"
-"2026","Takuto Yoshimoto, Akihito Noda","Demonstration of Distributing Actuators on Conductive Textile for Whole-body Haptic Interactions","2026 IEEE 23rd Consumer Communications &amp;amp; Networking Conference (CCNC)","","https://doi.org/10.1109/CCNC65079.2026.11366602","","","","","","Takuto Yoshimoto","Akihito Noda","","","1-2","@inproceedings{Yoshimoto_2026,
-  title={Demonstration of Distributing Actuators on Conductive Textile for Whole-body Haptic Interactions},
-  url={http://dx.doi.org/10.1109/CCNC65079.2026.11366602},
-  DOI={10.1109/ccnc65079.2026.11366602},
-  booktitle={2026 IEEE 23rd Consumer Communications &amp;amp; Networking Conference (CCNC)},
-  publisher={IEEE},
-  author={Yoshimoto, Takuto and Noda, Akihito},
-  year={2026},
-  month=Jan,
-  pages={1–2}
-}"
-"2026","Akihito Noda","Demonstration of Fabric Deformation Estimation Using a Battery-Free IMU Module Array","2026 IEEE 23rd Consumer Communications &amp;amp; Networking Conference (CCNC)","","https://doi.org/10.1109/CCNC65079.2026.11366564","","","","","","Akihito Noda","Akihito Noda","","","1-2","@inproceedings{Noda_2026,
+"2026","Akihito Noda","Demonstration of Fabric Deformation Estimation Using a Battery-Free IMU Module Array","IEEE CCNC","","https://doi.org/10.1109/CCNC65079.2026.11366564","","","","","","Akihito Noda","Akihito Noda","","","1-2","@inproceedings{Noda_2026,
   title={Demonstration of Fabric Deformation Estimation Using a Battery-Free IMU Module Array},
   url={http://dx.doi.org/10.1109/CCNC65079.2026.11366564},
   DOI={10.1109/ccnc65079.2026.11366564},
@@ -78,5 +57,26 @@
   month=Jan,
   pages={1–2}
 }"
+"2026","Takuto Yoshimoto, Akihito Noda","Demonstration of Distributing Actuators on Conductive Textile for Whole-body Haptic Interactions","IEEE CCNC","","https://doi.org/10.1109/CCNC65079.2026.11366602","","","","","","Takuto Yoshimoto","Akihito Noda","","","1-2","@inproceedings{Yoshimoto_2026,
+  title={Demonstration of Distributing Actuators on Conductive Textile for Whole-body Haptic Interactions},
+  url={http://dx.doi.org/10.1109/CCNC65079.2026.11366602},
+  DOI={10.1109/ccnc65079.2026.11366602},
+  booktitle={2026 IEEE 23rd Consumer Communications &amp;amp; Networking Conference (CCNC)},
+  publisher={IEEE},
+  author={Yoshimoto, Takuto and Noda, Akihito},
+  year={2026},
+  month=Jan,
+  pages={1–2}
+}"
 "2026","Ryo Takahashi, Hsin Huei Chen, Hongyu Mao, Wakako Yukita, Tomoyuki Yokota, Takao Someya, Yoshihiro Kawahara, Yiyue Luo, Irmandy Wicaksono","Knittable electronic textiles for intelligent soft wearables","npj. Flexible Electronics (in press)","","","","","","","","Ryo Takahashi","Yiyue Luo, Irmandy Wicaksono","","","",""
+"2026","Hideaki Yamamoto, Yifan Li, Yoshihiro Kawahara, Ryo Takahashi","picoRing dual: ultralow-power bimanual ring controllers for everyday AR","","picoring_dual.pdf","","","","","","","H. Yamamoto","Ryo Takahashi","","","","@inproceedings{Yamamoto_2026_picoRing_dual,
+  series={ISWC '26},
+  title={picoRing dual: ultralow-power bimanual ring controllers for everyday AR},
+  booktitle={Proceedings of the 2026 ACM International Symposium on Wearable Computers},
+  publisher={ACM},
+  author={Yamamoto, Hideaki and Li, Yifan and Kawahara, Yoshihiro and Takahashi, Ryo},
+  year={2026},
+  pages={1–8},
+  collection={ISWC '26}
+}"
 "2026","Shigemi Ishida,Ryo Takahashi,Satoshi Ido","Packet Interval Modulation-based NFC for Scalable IoT around Meandered E-textile","","","","","","","","","Shigemi Ishida,Ryo Takahashi,Satoshi Ido","Shigemi Ishida","","","",""
