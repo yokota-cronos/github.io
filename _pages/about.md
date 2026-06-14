@@ -91,8 +91,8 @@ redirect_from:
 
 <h2 id="publication">Publication</h2>
 
-{% assign pubs = site.data.publications | sort: "year" | reverse %}
-{% assign pubgroups = pubs | group_by: "year" | sort: "name" | reverse %}
+{% comment %} 年ごとにまとめ（新しい年を上に）、年内はスプレッドシート(CSV)の行順を維持 {% endcomment %}
+{% assign pubgroups = site.data.publications | group_by: "year" | sort: "name" | reverse %}
 {% for grp in pubgroups %}
 <h3 class="year-head">{{ grp.name }}</h3>
 <div class="pub-list2">
