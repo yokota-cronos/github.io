@@ -30,10 +30,10 @@ def _norm_title(t):
     return re.sub(r'[^a-z0-9]', '', (t or '').lower())
 
 
-def preserve_from_prev(rows):
-    """シートに無い列 (pdf, および DOI/arXiv の無い論文の手書き bibtex) を
-    前回 CSV から引き継ぐ。新しい値が空のときだけ前回値で埋める = リポジトリの
-    pdf を優先する。タイトル(正規化)または DOI で突き合わせる。"""
+def preserve_from_prev(rows, cols):
+    """指定した列を前回 CSV から引き継ぐ。新しい値が空のときだけ前回値で埋める
+    (= リポジトリ側の値を優先)。DOI または正規化タイトルで突き合わせる。
+    pdf や、DOI/arXiv の無い論文の手書き bibtex・著者を維持するために使う。"""
     if not PREV_CSV or not os.path.exists(PREV_CSV):
         return False
     try:
@@ -41,37 +41,30 @@ def preserve_from_prev(rows):
             prev = list(csv.DictReader(f))
     except Exception:
         return False
-    pdf_by_doi, pdf_by_title = {}, {}
-    bib_by_doi, bib_by_title = {}, {}
+    by_doi = {c: {} for c in cols}
+    by_title = {c: {} for c in cols}
     for r in prev:
         d = extract_doi(r.get("doi", ""))
         t = _norm_title(r.get("title"))
-        pdf = (r.get("pdf") or "").strip()
-        bib = (r.get("bibtex") or "").strip()
-        if pdf:
+        for c in cols:
+            v = (r.get(c) or "").strip()
+            if not v:
+                continue
             if d:
-                pdf_by_doi[d.lower()] = pdf
+                by_doi[c][d.lower()] = v
             if t:
-                pdf_by_title[t] = pdf
-        if bib:
-            if d:
-                bib_by_doi[d.lower()] = bib
-            if t:
-                bib_by_title[t] = bib
+                by_title[c][t] = v
     ch = False
     for row in rows:
         d = extract_doi(row.get("doi", ""))
         dk = d.lower() if d else None
         tk = _norm_title(row.get("title"))
-        if not (row.get("pdf") or "").strip():
-            pdf = (dk and pdf_by_doi.get(dk)) or pdf_by_title.get(tk)
-            if pdf:
-                row["pdf"] = pdf
-                ch = True
-        if not (row.get("bibtex") or "").strip():
-            bib = (dk and bib_by_doi.get(dk)) or bib_by_title.get(tk)
-            if bib:
-                row["bibtex"] = bib
+        for c in cols:
+            if (row.get(c) or "").strip():
+                continue
+            v = (dk and by_doi[c].get(dk)) or by_title[c].get(tk)
+            if v:
+                row[c] = v
                 ch = True
     return ch
 
@@ -221,7 +214,7 @@ def main():
         changed = True
 
     # リポジトリ側で手動管理している pdf / (DOI 無し論文の) bibtex を前回 CSV から引き継ぐ。
-    if preserve_from_prev(rows):
+    if preserve_from_prev(rows, ["pdf", "bibtex"]):
         changed = True
 
     for row in rows:
@@ -296,6 +289,11 @@ def main():
                 row["bibtex"] = bib
                 changed = True
         print("  enriched %s -> %s" % (bibtex_doi, (row.get("title") or "")[:60]))
+
+    # enrich 後もまだ著者が空の行 (DOI/arXiv 無し、または API 取得失敗) は前回値で補う。
+    # DOI ありの行は上で API から埋まっているので、この引き継ぎは上書きしない。
+    if preserve_from_prev(rows, ["authors"]):
+        changed = True
 
     if changed:
         with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
